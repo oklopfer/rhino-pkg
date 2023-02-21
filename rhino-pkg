@@ -73,7 +73,9 @@ Example execution:
 export tag=$(cat << __EOF__ | $(basename "$0") 0.0.2
 $logo
 A package manager wrapper for Pacstall, APT, Flatpak and snap
-Developed by Henryws <hwengerstickel@protonmail.com> for the Rhino Linux distribution | EOF)
+Developed by Henryws <hwengerstickel@protonmail.com> for the Rhino Linux distribution
+__EOF__
+)
 
 export NC='\033[0m'
 export BGreen='\033[1;32m'
