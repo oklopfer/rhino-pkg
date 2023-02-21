@@ -14,7 +14,8 @@ export c2='\u033[0m'        # white/reset
 export c3='\u033[38;5;55m'  # dark purple
 export c4='\u033[38;5;98m'  # medium purple
 
-help_flag="USAGE: rhino-pkg [function] {flag} <input>
+help_flag=__EOF__
+USAGE: rhino-pkg [function] {flag} <input>
 
 functions:
         ## Outputs of functions will provide numbered lists. ##
@@ -70,7 +71,8 @@ ${c3}   ''''''''${c2}kXOM.
 ${c3}     .,,:${c2}dXMK           
 ${c3}       ${c2}:k ")
 A package manager wrapper for Pacstall, APT, Flatpak and snap
-Developed by Henryws <hwengerstickel@protonmail.com> for the Rhino Linux distribution"
+Developed by Henryws <hwengerstickel@protonmail.com> for the Rhino Linux distribution
+__EOF__
 
 export NC='\033[0m'
 export BGreen='\033[1;32m'
