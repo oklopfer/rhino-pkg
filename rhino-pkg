@@ -9,10 +9,10 @@ else
     export TEXTDOMAINDIR=/usr/share/locale
 fi
 
-c1="\u001b[38;5;104m" # light purple
-c2="\u001b[0m"        # white/reset
-c3="\u001b[38;5;55m"  # dark purple
-c4="\u001b[38;5;98m"  # medium purple
+c1='"\u001b[38;5;104m"' # light purple
+c2='"\u001b[0m"'        # white/reset
+c3='"\u001b[38;5;55m"'  # dark purple
+c4='"\u001b[38;5;98m"'  # medium purple
 
 help_flag="$(basename "$0") 0.0.2
     ${c1}       .;:;,.  .:       
