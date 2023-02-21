@@ -17,7 +17,6 @@ c4=$'\u001b[38;5;98m'  # medium purple
 help_flag="USAGE: rhino-pkg [function] {flag} <input>
 
 functions:
-        ## Outputs of functions will provide numbered lists. ##
     install: Install package(s) - Prompts user to respond with 
              the number(s) associated with the desired package(s).
              
@@ -32,11 +31,13 @@ functions:
 
 flags: 
     --help/-h: Display this page
+    
     --description/-d: By default, rhino-pkg will only display packages 
     that contain <input> within their name. Use this flag to increase 
     range and display packages with <input> in their description.
     
-input: desired package name or description.
+input: 
+    Provide a package name or description.
 
 Example execution:
        >>> rhino-pkg install foobar
