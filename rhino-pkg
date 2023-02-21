@@ -28,7 +28,6 @@ help_flag="$(basename "$0") 0.0.2
     ${c3}     .,,:${c2}dXMK           
     ${c3}       ${c2}:k 
     A package manager wrapper for Pacstall, APT, Flatpak and snap
-    Developed by Henryws <hwengerstickel@protonmail.com> for the Rhino Linux distribution
 
 USAGE: rhino-pkg [function] {flag} <input>
 
@@ -48,11 +47,13 @@ functions:
 
 flags: 
     --help/-h: Display this page
-    --description/-d: By default, rhino-pkg will only display packages that contain <input> within 
-    their name. Use this flag to increase range and display packages with <input> in their description.
+    --description/-d: By default, rhino-pkg will only display packages 
+    that contain <input> within their name. Use this flag to increase 
+    range and display packages with <input> in their description.
     
 input: desired package name or description.
-       Example input:
+
+Example execution:
        >>> rhino-pkg install foobar
        Searching...
        Found packages matching 'foobar':
@@ -64,7 +65,15 @@ input: desired package name or description.
        [4]: foobar-bin (pacstall)
        [5]: foobar-theme (pacstall)
 
-       Select which package to install [0-5]: 3 4 5"
+       Select which package to install [0-5]: 3 4 5
+       Selecting 'foobar-web' from package manager 'snap'
+       Selecting 'foobar-bin' from package manager 'pacstall'
+       Selecting 'foobar-theme' from package manager 'pacstall'
+       Are you sure? (y/N)
+       
+$(basename "$0") 0.0.2
+A package manager wrapper for Pacstall, APT, Flatpak and snap
+Developed by Henryws <hwengerstickel@protonmail.com> for the Rhino Linux distribution"
 
 export NC='\033[0m'
 export BGreen='\033[1;32m'
