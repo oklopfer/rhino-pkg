@@ -27,7 +27,7 @@ functions:
 flags: 
     --help/-h: Display this page
     --description/-d: By default, rhino-pkg will only display packages that contain [input] within 
-    their name. Use this flag to increase range an display packages with [input] in their description."
+    their name. Use this flag to increase range and display packages with [input] in their description."
 
 export NC='\033[0m'
 export BGreen='\033[1;32m'
