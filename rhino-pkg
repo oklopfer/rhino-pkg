@@ -9,10 +9,10 @@ else
     export TEXTDOMAINDIR=/usr/share/locale
 fi
 
-export c1='\033[38;5;104m' # light purple
-export c2='\u033[0m'        # white/reset
-export c3='\u033[38;5;55m'  # dark purple
-export c4='\u033[38;5;98m'  # medium purple
+export c1='"\u001b[38;5;104m"' # light purple
+export c2='"\u001b[0m"'        # white/reset
+export c3='"\u001b[38;5;55m"'  # dark purple
+export c4='"\u001b[38;5;98m"'  # medium purple
 
 help_flag=$(cat << __EOF__
 USAGE: rhino-pkg [function] {flag} <input>
