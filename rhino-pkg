@@ -14,7 +14,7 @@ export c2='\u001b[0m'        # white/reset
 export c3='\u001b[38;5;55m'  # dark purple
 export c4='\u001b[38;5;98m'  # medium purple
 
-help_flag=$(cat << __EOF__
+help_flag=$(echo << __EOF__
 USAGE: rhino-pkg [function] {flag} <input>
 
 functions:
