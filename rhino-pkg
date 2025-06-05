@@ -18,9 +18,25 @@ def main [
     }
 }
 
-def "main --help" [] { main help }
+alias main --help = main help
+alias main -h = main help
 
-def "main -h" [] { main help }
+alias main s = main search
+alias main sd = main search --description
+
+alias main i = main install
+alias main id = main install --description
+
+alias main r = main remove
+alias main rm = main remove
+
+alias main c = main cleanup
+
+alias main u = main update
+alias main up = main update
+alias main upgrade = main update
+
+alias main sy = main sync
 
 def "main help" [] {
     let help_cmds = [
@@ -98,21 +114,6 @@ rpk 2.0.0\nA package manager wrapper for Pacstall, APT, Flatpak and Snap\n
 Created by Elsie19 <elsie19@pm.me>\nDeveloped for the Rhino Linux distribution."
 }
 
-def "main s" [
-    --description (-d)
-    rest: string
-] {
-    if $description {
-        main search $rest --description
-    } else {
-        main search $rest
-    }
-}
-
-def "main sd" [
-    rest: string
-] { main search $rest --description }
-
 def "main search" [
     --description (-d) # Increase range and display packages with <input> in their description
     rest: string # Search query
@@ -137,37 +138,6 @@ def "main search" [
                 | rename index Package Provider
             )
         }
-    }
-}
-
-def "main i" [
-    --description (-d)
-    --yes (-y)
-    rest: string
-] {
-    if $description {
-        if $yes {
-            main install $rest --description --yes
-        } else {
-            main install $rest --description
-        }
-    } else {
-        if $yes {
-            main install $rest --yes
-        } else {
-            main install $rest
-        }
-    }
-}
-
-def "main id" [
-    --yes (-y)
-    rest: string
-] {
-    if $yes {
-        main install $rest --description --yes
-    } else {
-        main install $rest --description
     }
 }
 
@@ -237,28 +207,6 @@ def "main install" [
     }
 }
 
-def "main r" [
-    --yes (-y)
-    rest: string
-] {
-    if $yes {
-        main remove $rest --yes
-    } else {
-        main remove $rest
-    }
-}
-
-def "main rm" [
-    --yes (-y)
-    rest: string
-] {
-    if $yes {
-        main remove $rest --yes
-    } else {
-        main remove $rest
-    }
-}
-
 def "main remove" [
     --yes (-y) # Makes functions with confirmation prompts run promptless
     rest: string # Search query
@@ -294,16 +242,6 @@ def "main remove" [
     }
 }
 
-def "main c" [
-    --yes (-y)
-] {
-    if $yes {
-        main cleanup --yes
-    } else {
-        main cleanup
-    }
-}
-
 def "main cleanup" [
     --yes (-y) # Makes functions with confirmation prompts run promptless
 ] {
@@ -319,36 +257,6 @@ def "main cleanup" [
         }
     }
     cleanup-pkg $yes
-}
-
-def "main u" [
-    --yes (-y)
-] {
-    if $yes {
-        main update --yes
-    } else {
-        main update
-    }
-}
-
-def "main up" [
-    --yes (-y)
-] {
-    if $yes {
-        main update --yes
-    } else {
-        main update
-    }
-}
-
-def "main upgrade" [
-    --yes (-y)
-] {
-    if $yes {
-        main update --yes
-    } else {
-        main update
-    }
 }
 
 def "main update" [
@@ -368,10 +276,6 @@ def "main update" [
     pacstall upgrade $yes
     flatpak upgrade $yes
     snap upgrade $yes
-}
-
-def "main sy" [] {
-    repo-sync
 }
 
 def "main sync" [] {
