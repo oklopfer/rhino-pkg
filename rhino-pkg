@@ -6,18 +6,6 @@ use "/usr/share/rhino-pkg/modules/lib/cmd.nu" [prompt cleanup-pkg remove-pkg rep
 
 tregister /usr/share/locale/ rhino-pkg
 
-def main [
-    --description (-d) # Increase range and display packages with <input> in their description
-    --help (-h) # Display help page
-    --yes (-y) # Makes functions with confirmation prompts run promptless
-    ...rest: string # 'install', 'remove', 'search', 'update', 'cleanup', etc
-] : any -> int {
-    run-external $env.CURRENT_FILE help
-    if ($rest | is-empty) {
-        exit 1
-    }
-}
-
 alias "main --help" = main help
 alias "main -h" = main help
 
@@ -37,6 +25,18 @@ alias "main up" = main update
 alias "main upgrade" = main update
 
 alias "main sy" = main sync
+
+def main [
+    --description (-d) # Increase range and display packages with <input> in their description
+    --help (-h) # Display help page
+    --yes (-y) # Makes functions with confirmation prompts run promptless
+    ...rest: string # 'install', 'remove', 'search', 'update', 'cleanup', etc
+] : any -> int {
+    run-external $env.CURRENT_FILE help
+    if ($rest | is-empty) {
+        exit 1
+    }
+}
 
 def "main help" [] {
     let help_cmds = [
