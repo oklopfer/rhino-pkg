@@ -18,25 +18,25 @@ def main [
     }
 }
 
-alias main --help = main help
-alias main -h = main help
+alias "main --help" = main help
+alias "main -h" = main help
 
-alias main s = main search
-alias main sd = main search --description
+alias "main s" = main search
+alias "main sd" = main search --description
 
-alias main i = main install
-alias main id = main install --description
+alias "main i" = main install
+alias "main id" = main install --description
 
-alias main r = main remove
-alias main rm = main remove
+alias "main r" = main remove
+alias "main rm" = main remove
 
-alias main c = main cleanup
+alias "main c" = main cleanup
 
-alias main u = main update
-alias main up = main update
-alias main upgrade = main update
+alias "main u" = main update
+alias "main up" = main update
+alias "main upgrade" = main update
 
-alias main sy = main sync
+alias "main sy" = main sync
 
 def "main help" [] {
     let help_cmds = [
