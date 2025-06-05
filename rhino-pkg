@@ -57,7 +57,7 @@ def "main help" [] {
             Description: "Refresh repository data for all available managers",
             Usage: "sync",
             Flags: "",
-            Variants: "sy, sys (-d), sysd, syi (-d -y), syid (-y)"
+            Variants: "sy, S, Ss (-d), Ssd, Si (-d -y), Sid (-y)"
         },
         {
             Command: "update",
@@ -109,7 +109,7 @@ def "main s" [
     }
 }
 
-def "main sys" [
+def "main Ss" [
     --description (-d)
     rest: string
 ] {
@@ -127,7 +127,7 @@ def "main sd" [
     main search $rest --description
 }
 
-def "main sysd" [
+def "main Ssd" [
     rest: string
 ] { 
     repo-sync
@@ -181,7 +181,7 @@ def "main i" [
     }
 }
 
-def "main syi" [
+def "main Si" [
     --description (-d)
     --yes (-y)
     rest: string
@@ -213,7 +213,7 @@ def "main id" [
     }
 }
 
-def "main syid" [
+def "main Sid" [
     --yes (-y)
     rest: string
 ] {
@@ -422,6 +422,10 @@ def "main update" [
     pacstall upgrade $yes
     flatpak upgrade $yes
     snap upgrade $yes
+}
+
+def "main S" [] {
+    repo-sync
 }
 
 def "main sy" [] {
