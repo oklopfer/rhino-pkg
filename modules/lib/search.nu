@@ -4,23 +4,43 @@ use "/usr/share/rhino-pkg/modules/lib/cmd.nu" [exists print-color]
 export def search-pkgs [
     description: bool
     rest: string
+    exclude: string
 ] : nothing -> table {
     use "/usr/share/rhino-pkg/modules/pluggables/" [apt pacstall flatpak snap]
-    if (exists "flatpak") {
-        ^sudo -v
+    let excludes = (
+        if ($exclude | is-empty) {
+            []
+        } else {
+            $exclude
+            | split row ","
+            | each {|x| $x }
+        }
+    )
+    if not ($excludes | any {|e| $e == "flatpak" }) {
+        if (exists "flatpak") {
+            ^sudo -v
+        }
     }
-    tprint "Searching APT…"
-    let apt_results = (apt search $rest $description err> /dev/null)
-    clearscr
-    tprint "Searching Pacstall…"
-    let pac_results = (pacstall search $rest $description err> /dev/null)
-    clearscr
-    tprint "Searching Flatpak…"
-    let flatpak_results = (flatpak search $rest $description err> /dev/null)
-    clearscr
-    tprint "Searching Snap…"
-    let snap_results = (snap search $rest $description err> /dev/null)
-    clearscr
+    if not ($excludes | any {|e| $e == "apt" }) {
+        tprint "Searching APT…"
+        let apt_results = (apt search $rest $description err> /dev/null)
+        clearscr
+    } else { let apt_results = [] }
+    if not ($excludes | any {|e| $e == "pacstall" }) {
+        tprint "Searching Pacstall…"
+        let pac_results = (pacstall search $rest $description err> /dev/null)
+        clearscr
+    } else { let pac_results = [] }
+    if not ($excludes | any {|e| $e == "flatpak" }) {
+        tprint "Searching Flatpak…"
+        let flatpak_results = (flatpak search $rest $description err> /dev/null)
+        clearscr
+    } else { let flatpak_results = [] }
+    if not ($excludes | any {|e| $e == "snap" }) {
+        tprint "Searching Snap…"
+        let snap_results = (snap search $rest $description err> /dev/null)
+        clearscr
+    } else { let snap_results = [] }
     let total = $apt_results
         | append $pac_results
         | append $flatpak_results

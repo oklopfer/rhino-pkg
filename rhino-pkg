@@ -136,10 +136,11 @@ def "main Ssd" [
 
 def "main search" [
     --description (-d) # Increase range and display packages with <input> in their description
+    --exclude (-e): string # Comma list of managers to exclude
     rest: string # Search query
 ] {
     # Block output from `return` here.
-    let dummy = (search search-pkgs $description $rest)
+    let dummy = (search search-pkgs $description $rest $exclude)
     if ($dummy | is-empty) {
         tprint -e "No packages found matching '{rest}'!" { rest: $rest }
         exit 1
